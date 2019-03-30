@@ -46,9 +46,11 @@ Status ListInsert(SqlList *L, int i, ElemType e)
         }
     if (i<=L->length){
         for (k=L->length-1;k>=i-1;k--){
+            //所有元素往后移动一位
             L->data[k+1]=L->data[k];
             }
         }
+    //当i=1时,从头部插入元素
     L->data[i-1] = e;
     L->length++;
     return OK;
@@ -64,11 +66,12 @@ Status ListDelete(SqlList *L, int i, ElemType *e)
     if (i<1 || i>L->length){
         return ERROR;
         }
-
+    //当i=1时,从头部删除元素
     *e=L->data[i-1];
 
     if (i<L->length){
         for (k=i;k<L->length;k++){
+            //所有元素往前移动一位
             L->data[k-1]=L->data[k];
         }
     
@@ -92,7 +95,7 @@ Status ListTraveres(SqlList L)
 int main(){
     
     SqlList L;
-    ElemType e;
+    
     //int i;
     int j, k;
     InitList(&L);
