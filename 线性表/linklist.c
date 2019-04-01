@@ -35,8 +35,9 @@ Status visit(ElemType c)
 Status InitList(LinkList *L) 
 { 
     *L = (LinkList)malloc(sizeof(Node)); 
-    if(!(*L)) 
-            return ERROR;
+    if(!(*L)){
+        return ERROR;
+        } 
     (*L)->next = NULL; 
 
     return OK;
@@ -184,7 +185,10 @@ int main(){
     printf("GetElem:\n");
     ListTraveres(L);
 
-    printf("FirstElem:%d", GetElem(L, 1, &e));
+    printf("ListLength:%d\n", ListLength(L));
+
+    GetElem(L, 1, &e);
+    printf("GetElem data:%d", e);
 
     return 0;
 }
