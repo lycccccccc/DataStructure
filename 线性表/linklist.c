@@ -43,6 +43,7 @@ Status InitList(LinkList *L)
     return OK;
 }
 
+//获取第i个元素
 Status GetElem(LinkList L, int i, ElemType *e)
 {
     int j;
@@ -61,6 +62,7 @@ Status GetElem(LinkList L, int i, ElemType *e)
     return OK;
 }
 
+//在第i个节点位置之前插入元素
 Status ListInsert(LinkList *L, int i, ElemType e)
 {
     int j;
@@ -104,6 +106,7 @@ Status ListDelete(LinkList *L, int i, ElemType *e)
     return OK;
 }
 
+//整表创建， 头插法
 void CreateListHead(LinkList *L, int n)
 {
     LinkList p;
@@ -131,6 +134,7 @@ int ListLength(LinkList L)
     return i;
 }
 
+//尾插法
 void CreateListTail(LinkList *L, int n)
 {
     LinkList p, r;
@@ -183,6 +187,8 @@ int main(){
         ListInsert(&L, 1, j);
     }
     printf("GetElem:\n");
+
+    CreateListTail(&L, 8);
     ListTraveres(L);
 
     printf("ListLength:%d\n", ListLength(L));
