@@ -116,7 +116,12 @@ void CreateListHead(LinkList *L, int n)
     (*L)->next = NULL;
     for(i = 0; i < n; i++){
         p = (LinkList)malloc(sizeof(Node));
-        p->data = rand()%100+1;
+        // 通过插入元素1来判断是否为头插法
+        if(i == 0){
+            p->data = 1;
+        }else{
+            p->data = rand()%100+1;
+        }
         p->next = (*L)->next;
         (*L)->next = p;
     }
@@ -144,7 +149,12 @@ void CreateListTail(LinkList *L, int n)
     r = *L;
     for(i = 0; i < n; i++){
         p = (Node *)malloc(sizeof(Node));
-        p->data = rand()%100+1;
+        // 通过插入元素1来判断是否为尾插法
+        if(i == 0){
+            p->data = 1;
+        }else{
+            p->data = rand() % 100 + 1;
+        }
         r->next = p;
         r = p;
     }
@@ -188,7 +198,8 @@ int main(){
     }
     printf("GetElem:\n");
 
-    CreateListTail(&L, 8);
+    CreateListHead(&L, 8);
+    //CreateListTail(&L, 8);
     ListTraveres(L);
 
     printf("ListLength:%d\n", ListLength(L));
